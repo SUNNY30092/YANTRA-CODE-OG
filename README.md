@@ -1,4 +1,5 @@
 All the above files run using few python libraries and other dependencies The below is the command line instructions using python installation package(pip) for downloading and running the above files:
+Note:  see the Readme file in code mode
 #checking for python
 python --version
 //if python not installed please follow any tutorial to install it.
