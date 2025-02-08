@@ -3,80 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Quality Enhancer</title>
+    <title>D Cleano - Data Quality Enhancer</title>
     <style>
-        /* Basic Styling */
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #003366, #0066cc);
+            color: white;
             margin: 0;
             padding: 0;
             text-align: center;
-            background-color: #f4f4f4;
         }
 
         /* Navbar Styling */
         .navbar {
-            background-color: #007bff;
+            background-color: #004080;
             overflow: hidden;
-            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
         }
 
+        /* Title "D Cleano" */
+        .navbar .title {
+            font-size: 24px;
+            font-family: 'Raleway', sans-serif;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        /* Navbar Links */
         .navbar a {
             color: white;
             text-decoration: none;
-            padding: 14px 20px;
-            display: inline-block;
+            padding: 10px 15px;
+            font-size: 18px;
         }
 
         .navbar a:hover {
             background-color: #0056b3;
+            border-radius: 5px;
         }
 
         /* Main Container */
         .container {
-            margin-top: 50px;
+            margin-top: 30px;
             padding: 20px;
-            background: white;
-            width: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            width: 70%;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
             border-radius: 10px;
         }
 
-        /* Upload Button */
-        input[type="file"], select {
-            margin: 15px 0;
+        /* File Upload Section */
+        input, select, button {
             padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
         }
 
         button {
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
-            border: none;
-            padding: 10px 15px;
             cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
+        }
+
+        /* Dusty Text Effect */
+        .dusty-text span {
+            display: inline-block;
+            color: #a57b5b; /* Initial dusty brown color */
+            transition: color 0.4s ease-in-out;
+            font-size: 16px;
+        }
+
+        .dusty-text span:hover {
+            color: white;
         }
 
         /* Download Link */
         #downloadLink {
             display: none;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #dc3545;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
+            font-size: 18px;
+            color: #ffcc00;
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         #downloadLink:hover {
-            background-color: #c82333;
+            color: #ffea80;
         }
     </style>
 </head>
@@ -84,9 +110,12 @@
 
     <!-- Navigation Bar -->
     <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="mailto:support@dataenhancer.com">Contact</a>
+        <div class="title">D Cleano</div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="mailto:support@dataenhancer.com">Contact</a>
+        </div>
     </div>
 
     <!-- Main Content -->
@@ -106,12 +135,59 @@
         <input type="file" id="csvFileInput" accept=".csv">
         <button onclick="uploadFile()">Upload and Process</button>
         
-        <p id="statusMessage" style="display:none; font-weight: bold; color: green;"></p>
+        <p id="statusMessage" style="display:none; font-weight: bold; color: yellow;"></p>
         
         <a id="downloadLink">Download Processed File</a>
     </div>
 
+    <!-- Dusty Text Effect Section -->
+    <div class="container">
+        <h3>Why Data Cleaning is Essential for Machine Learning</h3>
+        <p class="dusty-text" id="dustyText"></p>
+    </div>
+
     <script>
+        // Detailed Text for Data Cleaning
+        const textContent = `Data cleaning is a crucial step in machine learning and analytics. 
+        Raw data often contains missing values, duplicate entries, incorrect data types, and outliers, which can mislead models. 
+        A well-processed dataset improves model accuracy, reduces bias, and enhances performance. 
+        Cleaning techniques include handling missing values, normalizing data distributions, and removing noise.
+        In medical datasets, errors may affect diagnosis predictions, while financial datasets with anomalies could lead to incorrect risk assessments. 
+        AI-based data preprocessing identifies patterns, corrects inconsistencies, and ensures that datasets are ready for modeling.
+        Standardization and normalization are also critical to prevent skewed predictions. 
+        Without proper cleaning, even advanced algorithms may struggle to perform optimally.
+        Detecting and handling missing values is often done using mean imputation, median filling, or predictive modeling.
+        Duplicate records lead to redundant computations, so deduplication improves efficiency.
+        Removing outliers ensures that extreme values don’t distort machine learning models.
+        Encoding categorical variables correctly is essential to maintain meaningful data representation.
+        Incorrectly formatted dates, strings, or inconsistent numeric values can cause errors during data analysis.
+        Feature engineering techniques such as scaling and binning also contribute to a clean dataset.
+        Data validation ensures consistency across multiple data sources, preventing misalignment issues.
+        Imbalanced datasets can affect model generalization, requiring techniques such as SMOTE for balance.
+        Data integrity checks verify that information follows expected patterns, reducing corruption risks.
+        Cleaning financial datasets often involves detecting fraudulent patterns and rectifying misclassified transactions.
+        Survey datasets require careful handling of respondent biases and missing fields.
+        Automated tools use machine learning algorithms to perform intelligent data cleaning with minimal manual effort.
+        The combination of automated cleaning and domain knowledge leads to the best results.
+        Data consistency and format validation are essential for multi-source datasets.
+        A well-structured dataset ultimately enhances decision-making, enabling AI models to deliver reliable insights.`
+
+        const textContainer = document.getElementById("dustyText");
+
+        // Create span elements for each letter
+        textContent.split("").forEach(char => {
+            let span = document.createElement("span");
+            span.textContent = char;
+            textContainer.appendChild(span);
+
+            // Add a timeout to restore the dust effect
+            span.addEventListener("mouseover", function() {
+                setTimeout(() => {
+                    span.style.color = "#a57b5b"; // Return to dusty brown after a delay
+                }, 700); 
+            });
+        });
+
         async function uploadFile() {
             const input = document.getElementById("csvFileInput");
             const category = document.getElementById("category").value;
@@ -125,9 +201,8 @@
 
             let formData = new FormData();
             formData.append("file", input.files[0]);
-            formData.append("category", category);  // Send category to backend
+            formData.append("category", category);  
 
-            // Show processing message
             statusMessage.style.display = "block";
             statusMessage.innerText = "Processing your file, please wait...";
 
@@ -141,17 +216,13 @@
                     throw new Error("Failed to process file");
                 }
 
-                // Convert response to Blob
                 const blob = await response.blob();
-                
-                // Create download link
                 const downloadUrl = window.URL.createObjectURL(blob);
                 downloadLink.href = downloadUrl;
-                downloadLink.download = "processed_file.csv"; // File name
+                downloadLink.download = "processed_file.csv";
                 downloadLink.style.display = "inline-block";
                 downloadLink.innerText = "Download Processed File";
 
-                // Update status message
                 statusMessage.innerText = "Processing complete! Click below to download:";
             } catch (error) {
                 statusMessage.style.color = "red";
